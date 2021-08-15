@@ -1,11 +1,11 @@
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:sqliteapp/provider_lists.dart';
-import 'all_Lists.dart';
 
-import 'Mynode.dart';
+import 'package:provider/provider.dart';
+import 'shared/styles/appClrs.dart';
+import './logic/service.dart';
+import './modules/allNotesScreen/allNotesScreen.dart';
+import 'logic/mainProv.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,14 +17,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers:[
-        ChangeNotifierProvider(
-          create: (_)=> ProviderList(),
-        ),
+        ChangeNotifierProvider(create: (_)=> MainProv(),),
+        ChangeNotifierProvider(create: (_)=> DataSavedService(),),
       ],
       child: MaterialApp(
-        home: AllLists(),
+        debugShowCheckedModeBanner: false,
+        darkTheme: appClrs.appThem(true),
+        themeMode: ThemeMode.dark,
+        home: AllNotesScreen(),
       ),
     );
   }
-
 }
