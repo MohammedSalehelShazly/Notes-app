@@ -1,16 +1,12 @@
-# sqliteapp
+Notes app
 
-A new Flutter application.
+sqlfite => insert && delete all && delete some rows && update
+select items with check box
+search with title or content
+awesome and simple animations
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![1](https://user-images.githubusercontent.com/71941881/129562048-3c20a597-99a1-4a40-95f6-7025dcd56c51.png)
+![2](https://user-images.githubusercontent.com/71941881/129562057-a27655a7-ae3e-425a-a20f-fac82d40c7de.png)
+![3](https://user-images.githubusercontent.com/71941881/129562062-63ba0670-7bbb-4ee3-888a-35016095a514.png)
+![4](https://user-images.githubusercontent.com/71941881/129562067-12ceccbb-8527-4537-a123-a21edaf51e64.png)
+![5](https://user-images.githubusercontent.com/71941881/129562070-3e597a6c-50b6-40ed-ab34-b9aa2679e24c.png)
