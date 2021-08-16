@@ -1,9 +1,12 @@
 Notes app
 
-sqlfite => insert && delete all && delete some rows && update
-select items with check box
-search with title or content
-awesome and simple animations
+1) sqlfite => insert && delete all && delete some rows && update ...
+
+2) select items with check box ...
+
+3) search with title or content ...
+
+4) awesome and simple animations
 
 ![1](https://user-images.githubusercontent.com/71941881/129562048-3c20a597-99a1-4a40-95f6-7025dcd56c51.png)
 ![2](https://user-images.githubusercontent.com/71941881/129562057-a27655a7-ae3e-425a-a20f-fac82d40c7de.png)
