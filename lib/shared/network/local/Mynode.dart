@@ -11,18 +11,27 @@ class Mynode {
 
   initialDB() async {
     var docDir = await getDatabasesPath();
-    String path = join(docDir, 'tasks.db');
+    String path = join(docDir, 'notes.db');
     Database database = await openDatabase(path, version: 1,
         onCreate: (Database db, int version) async {
           await db.execute(
-            'CREATE TABLE Test (id INTEGER PRIMARY KEY, name TEXT, content TEXT, color TEXT ,date TEXT ,lastUpdate TEXT)',);
+            'CREATE TABLE notesTable (id INTEGER PRIMARY KEY, name TEXT, content TEXT, color TEXT ,date TEXT ,lastUpdate TEXT)',);
         });
     return database;
   }
 
+  static Database _db ;
+  Future<Database> get db async{
+    if(_db == null)
+      _db = await initialDB();
+    return _db;
+  }
+
+
+
   deleteAll(BuildContext context) async{
-    Database init = await initialDB();
-    var delete = await init.delete('Test');
+    Database myDB = await db;
+    var delete = await myDB.delete('notesTable');
     /// update old lists ,to add new (note) to them
     Provider.of<DataSavedService>(context ,listen: false).searchNotes();
     await  Provider.of<DataSavedService>(context ,listen: false).getDataSaved();
@@ -31,10 +40,10 @@ class Mynode {
   }
 
   deleteSomeNotes(BuildContext context ,List<int> idList) async{
-    Database init = await initialDB();
+    Database myDB = await db;
     var del;
     for(int i=0 ;i<idList.length ;i++){
-      del = await init.delete('Test' ,where: 'id = "${idList[i]}"');
+      del = await myDB.delete('notesTable' ,where: 'id = "${idList[i]}"');
     }
     /// update old lists ,to add new (note) to them
     Provider.of<DataSavedService>(context ,listen: false).searchNotes();
@@ -44,14 +53,14 @@ class Mynode {
   }
 
   Future<List<Map<String, dynamic>>> showOldValues() async{
-    Database init = await initialDB();
-    return init.rawQuery('SELECT * FROM Test') ;
+    Database myDB = await db;
+    return myDB.rawQuery('SELECT * FROM notesTable') ;
   }
 
 
   insertRow(BuildContext context ,{@required String name, @required String content, @required String color}) async {
-    Database db = await initialDB();
-    var insert = await db.insert('Test', {
+    Database myDB = await db;
+    var insert = await myDB.insert('notesTable', {
       'name' : name,
       'content' : content,
       'color' : color,
@@ -65,18 +74,9 @@ class Mynode {
     return insert;
   }
 
-  /// ================================================================================================================================================================
-
-
-  selectCustomTask(int index) async{
-    var init = await initialDB();
-    var selection = await init.rawQuery('SELECT name, content,color FROM Test') ;
-    return selection[index];
-  }
-
   updateNote(BuildContext context ,int id ,{@required String name, @required String content, @required String color}) async{
-    Database init = await initialDB();
-    var update = await init.update('Test', {
+    Database init = await db;
+    var update = await init.update('notesTable', {
       'name' : name,
       'content' : content,
       'color' : color,
