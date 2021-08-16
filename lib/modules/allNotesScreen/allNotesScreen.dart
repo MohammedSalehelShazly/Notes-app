@@ -25,7 +25,7 @@ class AllNotesScreen extends StatefulWidget {
 class _AllNotesScreenState extends State<AllNotesScreen> {
   Mynode myNode = Mynode();
 
-  DoubleTapToUndo doubleTapToUndo = DoubleTapToUndo();
+  DoubleTapToExit doubleTapToUndo = DoubleTapToExit();
 
   DataSavedService dataSavedServiceWrite;
 

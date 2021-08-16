@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 /// if create more than constructor its not work ,because the list (_tapCont) initialized every time you create constructor
 /// so, im not pass (context) to constructor
 // usage
-/// DoubleTapToUndo doubleTapToUndo = DoubleTapToUndo();
-/// onWillPop:()async()=> doubleTapToUndo.action(context);
+/// DoubleTapToExit doubleTapToExit = DoubleTapToExit();
+/// onWillPop:()async()=> doubleTapToExit.action(context);
 
-class DoubleTapToUndo {
+class DoubleTapToExit {
 
   _showSnackBar(BuildContext context){
     return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
